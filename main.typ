@@ -56,6 +56,8 @@ $bold(L_9): (B→C)→((B→¬C )→¬B)$
 
 $bold(L_10): ¬B→( B→C)$
 
+$bold(L_11): B∨¬B$
+
 $bold(L_12):  ∀x F (x)→F (t)$  (in particular, $∀x F (x)→F (x)$)
 
 $bold(L_13):  F (t)→∃ x F( x)$  (in  particular, $F (x)→∃ x F (x)$)
