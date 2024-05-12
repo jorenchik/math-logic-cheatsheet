@@ -1,4 +1,37 @@
+#set page(
+ margin: (
+   left: 1cm,
+   right: 1cm,
+   top: 1cm,
+   bottom: 1cm,
+ ),
+)
+
+
+
+#set heading(numbering: "1.")
+
+
+#show outline.entry.where(
+  level: 1
+): it => {
+  v(12pt, weak: true)
+  strong(it)
+}
+
+
 #set enum(numbering: "a)")
+
+// #show outline.entry.where(
+//   level: 1
+// ): it => {
+//   v(12pt, weak: true)
+//   strong(it)
+// }
+
+#outline(indent: auto)
+
+
 
 
 = Logical axiom schemes
@@ -29,9 +62,11 @@ $bold(L_13):  F (t)→∃ x F( x)$  (in  particular, $F (x)→∃ x F (x)$)
 
 $bold(L_14): ∀x(G →F (x))→(G→∀x F (x)) $
 
-$bold(L_15): ∀x(F (x)→G)→(∃z(x+z+1=y).x F (x)→G)$
+$bold(L_15): ∀x(F (x) arrow G) arrow (exists x F (x)→G)$
 
 = Theorems
+
+== Prooving directly
 
 $[L_1, L_2, #[MP]]$:
 
@@ -43,33 +78,36 @@ $[L_1, L_2, #[MP]]$:
   Permutation Law*. Explain the difference between this formula and Theorem
   1.4.3(a): A→(B→C)├ B→(A→C).
 
-== Theorem 1.5.1 (Deduction Theorem 1 AKA DT1)
+== Deduction theorems
+
+=== Theorem 1.5.1 (Deduction Theorem 1 AKA DT1)
 
 If $T$ is a first order theory, and there is a proof of
 $[T, #[MP]]: A_1, A_2, dots, A_n, B├ C$,
  then there is a proof of
 $[L_1, L_2, T, #[MP]]: A_1, A_2, dots, A_n├ B→C$.
 
-
-== Theorem 1.5.2 (Deduction Theorem 2 AKA DT2)
+=== Theorem 1.5.2 (Deduction Theorem 2 AKA DT2)
 
 If there is a proof $[T, #[MP], #[Gen]]: A_1, A_2, dots, A_n, B├ C$,
 where, after B appears in the proof, Generalization is not applied to the
 variables that occur as free in $B$, then there is a proof of
 $[L_1, L_2, L_14, T, #[MP], #[Gen]]: A_1, A_2, dots, A_n├ B→C$.
 
-== Theorem 2.2.1.
+== Conjunction 
+
+=== Theorem 2.2.1.
 
 + (C-introduction): $[L_5, #[MP]]: A, B├ A∧B$;
 + (C-elimination): $[L_3, L_4, #[MP]]: A∧B ├ A, A∧B ├ B$.
 
-== Theorem 2.2.2.
+=== Theorem 2.2.2.
 
 + $[L_1, L_2, L_5, #[MP]]: (A→(B→C)) ↔ ((A→B)→(A→C))$ (extension of the axiom L_2).
 + $[L_1-L_4, #[MP]]: (A→B)∧( B→C)→( A→C)$ (another form of the *Law of
   Syllogism*, or *transitivity property of implication*).
 
-== Theorem 2.2.3 (properties of the conjunction connective).
+=== Theorem 2.2.3 (properties of the conjunction connective).
 
 $[L_1- L_5, #[MP]]$:
 
@@ -77,7 +115,7 @@ $[L_1- L_5, #[MP]]$:
 + $ A∧(B∧C)↔( A∧B)∧C$. Conjunction  is associative.
 + $A∧A↔A$ . Conjunction is idempotent.
 
-== Theorem 2.2.4 (properties of the equivalence connective).
+=== Theorem 2.2.4 (properties of the equivalence connective).
 
 $[L_1- L_5, #[MP]]$:
 
@@ -86,7 +124,9 @@ $[L_1- L_5, #[MP]]$:
 + $(A↔B)→((B↔C) →((A↔C))$ (transitivity).
 
 
-== Theorem 2.3.1
+== Disjunction
+
+=== Theorem 2.3.1
 
 + (D-introduction)$[L_6, L_7, #[MP]]: A├ A∨B; B├ A∨B$; 
 + (D-elimination) If there is a proof $[T, #[MP]]: A_1, A_2, ..., A_n, B├ D$,
@@ -94,25 +134,17 @@ $[L_1- L_5, #[MP]]$:
 L_1, L_2, L_8, #[MP]]: A_1, A_2, dots, A_n, B∨C ├ D$. 
 
 
-== Theorem 2.3.4.
-
-Conjunction is distributive to disjunction, and disjunction is distributive to
-conjunction:
-
-+ $[L_1-L_8, #[MP]]: (A∧B)∨C ↔(A∨C)∧(B∨C)$;
-+ $[L_1-L_8, #[MP]]: (A∨B)∧C ↔(A∧C)∨(B∧C)$ .
-
-== Theorem 2.3.2
+=== Theorem 2.3.2
 
 a) $[ L_5, L_6-L_8, #[MP]]: A∨B↔B∨A$ . Disjunction is commutative.
 b) $[L_1, L_2, L_5, L_6-L_8, #[MP]]: A∨A↔A$ . Disjunction is idempotent.
 
-== Theorem 2.3.3.
+=== Theorem 2.3.3.
 
 Disjunction is associative: $[L_1, L_2, L_5, L_6-L_8, #[MP]]: A∨(B∨C)↔(
   A∨B)∨C$.
 
-== Theorem 2.3.4.
+=== Theorem 2.3.4.
 
 Conjunction is distributive to disjunction, and disjunction is distributive to
 conjunction:
@@ -120,21 +152,30 @@ conjunction:
 + $[L_1-L_8, #[MP]]: (A∧B)∨C ↔(A∨C)∧(B∨C)$ .
 + $[L_1-L_8, #[MP]]: (A∨B)∧C ↔(A∧C)∨(B∧C)$ .
 
+=== Theorem 2.3.4.
 
-== Theorem 2.4.1.
+Conjunction is distributive to disjunction, and disjunction is distributive to
+conjunction:
+
++ $[L_1-L_8, #[MP]]: (A∧B)∨C ↔(A∨C)∧(B∨C)$;
++ $[L_1-L_8, #[MP]]: (A∨B)∧C ↔(A∧C)∨(B∧C)$ .
+
+== Negation -- minimal logic
+
+=== Theorem 2.4.1.
 
 (N-elimination) If there is a proof
 
 $[T, #[MP]]: A_1, A_2, ..., A_n, B├ C$, and a proof $[T, #[MP]]: A_1, A_2, ..., A_n,
 B├ ¬C$, then there is a  proof $[T, L_1, L_2, L_9, #[MP]]: A_1, A_2, ..., A_n├ ¬B$.
 
-== Theorem 2.4.2.
+=== Theorem 2.4.2.
 
 a) $[L_1, L_2, L_9, #[MP]]: A, ¬B├ ¬(A→B)$. What does it mean?
 b) $[L_1-L_4, L_9, #[MP]]: A∧¬B→¬( A→B)$. 
 
 
-== Theorem 2.4.3.
+=== Theorem 2.4.3.
 
 $[L_1, L_2, L_9, #[MP]]: (A→B)→(¬B→¬A)$. What does it mean?
 It's the so-called *Contraposition Law*.
@@ -142,15 +183,11 @@ It's the so-called *Contraposition Law*.
 Note. The following rule form of Contraposition Law is called *Modus Tollens*:
 $[L_1, L_2, L_9, #[MP]]: A→B, ¬B├ ¬A, or, frac(A→B \; ¬B, ¬A)$
 
-== Theorem 2.4.4.
+=== Theorem 2.4.4.
 
 $[L_1, L_2, L_9, #[MP]]: A→¬¬A$.
 
-== Theorem 2.4.5.
-
-$[L_1, L_2, L_9, #[MP]]: ¬¬¬A↔¬A$.
-
-== Theorem 2.4.5.
+=== Theorem 2.4.5.
 
 a) $[L_1, L_2, L_9, #[MP]]: ¬¬¬A↔¬A$.
 b) $[L_1, L_2, L_6, L_7, L_9, #[MP]]: ¬¬( A∨¬A)$. What does it mean? This is a “weak
@@ -158,24 +195,26 @@ b) $[L_1, L_2, L_6, L_7, L_9, #[MP]]: ¬¬( A∨¬A)$. What does it mean? This i
   constructively. The formula $¬¬( A∨¬A)$ can be proved in the constructive logic,
   but $A∨¬A$ can't – as we will see in Section 2.8.
 
-== Theorem 2.4.9.
+=== Theorem 2.4.9.
 
 + $[L_1, L_2, L_8, L_9, #[MP]]: ¬A∨¬B→¬( A∧B)$ . It's the constructive half of the
   so-called *First de Morgan Law*. What does it mean?
 + $[L_1-L_9, #[MP]]: ¬(A∨B)↔¬A∧¬B$. It's the so-called *Second de Morgan Law*.
 
-== Theorem 2.5.1.
+== Negation -- constructive logic
+
+=== Theorem 2.5.1.
 
 + $[L_1, L_8, L_10, #[MP]]: ¬A∨B→( A→B)$.
 + $[L_1, L_2, L_6, #[MP]]: A∨B→(¬A→B) ├¬A→(A→B)$ .  It means that the “natural”
   rule $A∨B ;¬ A ├ B$ implies $L_10$!
 
 
-== Theorem 2.5.2. 
+=== Theorem 2.5.2. 
 
 $[L_1-L_10, #[MP]]$:
 
-+ $(¬¬A→¬¬B)→¬¬(A→B)$. It's the converse of Theorem 2.4.7(b). Hence, $[L1-L10,
++ $(¬¬A→¬¬B)→¬¬(A→B)$. It's the converse of Theorem 2.4.7(b). Hence, $[L_1-L_10,
   #[MP]]:├ ¬¬(A→B)↔(¬¬A→¬¬B)$.
 + $¬¬A→(¬A→A)$.  It's  the  converse  of  Theorem  2.4.6(a).  Hence, [L1-L10,
   #[MP]]: $¬¬A↔(¬A→A)$. 
@@ -183,49 +222,58 @@ $[L_1-L_10, #[MP]]$:
 + $¬¬(¬¬A→A)$. What does it mean? It’s a “weak” form of the Double Negations
   Law – provable in constructive logic. 
 
-== Theorem 2.6.1. (Double Negation Law)
+== Negation -- classical logic
+
+=== Theorem 2.6.1. (Double Negation Law)
 
 $[L_1, L_2, L_8, L_10, L_11, #[MP]]: ¬¬A → A$. Hence, $[L_1-L_11, #[MP]]: ¬¬A ↔
 A$.
 
-== Theorem 2.6.2.
+=== Theorem 2.6.2.
 
 $[L_8, L_11, #[MP]]: A→B, ¬A→B├ B$. Or, by Deduction Theorem 1, $[L_1, L_2, L_8,
 L_11, #[MP]]: (A→B)→((¬A→B)→B)$.
 
 
-== Theorem 2.6.3.
+=== Theorem 2.6.3.
 
 $[L_1-L_11, #[MP]]: (¬B→¬A)→(A→B)$. Hence, $[L_1-L_11, #[MP]]: (A→B) ↔ (¬B→¬A)$.
 
 
-== Theorem 2.6.3. 
+=== Theorem 2.6.3. 
 
 _(another one with the same number of because numbering error (it seems like it))_
 
-$[L_1-L_9, L_11, #[MP]]: ˫ ¬(A∧B)→¬A∨¬B$ . Hence, $[L_1-L_9, L_11, MP]: ˫
+$[L_1-L_9, L_11, #[MP]]: ˫ ¬(A∧B)→¬A∨¬B$ . Hence, $[L_1-L_9, L_11, #[MP]]: ˫
 ¬(A∧B)↔¬A∨¬B$ .
 
 
-== Theorem 2.6.4.
+=== Theorem 2.6.4.
 
-$[L_1-L_8, L_11, MP]: (A→B)→¬ A∨B $. Hence, (I-elimination) $[L_1-L_11, #[MP]]:
+$[L_1-L_8, L_11, #[MP]]: (A→B)→¬ A∨B $. Hence, (I-elimination) $[L_1-L_11, #[MP]]:
 (A→B)↔¬ A∨B$.
 
 
-== Theorem 2.6.5.
+=== Theorem 2.6.5.
 
-$[L_1-L_11, MP]: ¬(A→B)→A∧¬B $. 
-
-== Theorem 2.7.1 (Glivenko's Theorem).
-
-$[L_1-L_11, #[MP]]:├ A$ if and only if $[L1-L10, #[MP]]:├ ¬¬A$.
+$[L_1-L_11, #[MP]]: ¬(A→B)→A∧¬B $. 
 
 
-== Theorem 2.8.1.
+=== Theorem 2.7.1 (Glivenko's Theorem).
+
+$[L_1-L_11, #[MP]]:├ A$ if and only if $[L_1-L_10, #[MP]]:├ ¬¬A$.
+
+== Axiom independence
+
+=== Theorem 2.8.1.
 
 The axiom $L_9$: $(A→B)→((A→¬B)→¬A)$ can be proved in $[L_1, L_2, L_8, L_10,
 L_11, #[MP]]$.
+
+=== Theorem 2.8.2.
+
+The axiom $L_9$ cannot be proved in $[L_1-L_8, L_10, #[MP]]$.
+
 
 == Replacement Theorem 1
 
@@ -503,6 +551,44 @@ tests.
 
 === Prooving an F is satisfiable but NOT LVF 
 
+As an example, let us verify that the formula
+
+$
+∀x( p( x)∨q( x))→∀x p(x)∨∀x q(x)
+$
+
+is not logically valid (p, q are predicate constants). Why it is not? Because
+the truth-values of p(x) and q(x) may behave in such a way that $p(x)∨q(x)$  is
+always true, but neither $forall x p(x)$, nor $forall x q(x)$ is true. Indeed,
+let us take the domain $D = {a, b}$, and set (in fact, we are using one of two
+possibilities):
+
+
+#table(
+  columns: 3,
+  [x], [p(x)], [q(x)],
+  [b], [false], [true],
+  [a], [true], [false],
+)
+
+In  this  interpretation, $p(a)∨q(a) =  #[true]$ , $p(b)∨q(b) =  #[true]$,
+i.e.,  the premise $∀x( p( x)∨q(x))$ is true. But the formulas$forall p(x),
+forall q(x)$ both are false. Hence, in this interpretation, the conclusion $∀x
+p(x)∨∀x q(x)$ is false, and $∀x( p( x)∨q( x))→∀x p(x)∨∀x q(x)$ is false. We
+have built an interpretation, making the formula false. Hence, it is  not
+logically valid.
+
+On the other hand, this formula is satisfiable – there is an interpretation
+under which it is true. Indeed, let us take $D={a}$ as the domain of
+interpretation, and let us set $p(a)=q(a)=#[true]$. Then all the formulas
+
+$
+∀x( p( x)∨q( x)),∀x p(x),∀x q( x)
+$
+
+become true, and so becomes the entire formula.
+
+
 == Gödel's Completeness Theorem
 
 *Theorem 4.3.1.* In classical predicate logic $[L_1−L_15,#[MP],#[Gen]]$ all
@@ -511,3 +597,91 @@ logically valid formulas can be derived.
 *Theorem 4.3.3.* All formulas that can be derived in classical predicate logic
 $[L_1−L_15,#[MP],#[Gen]]$ are logically valid. In this logic it is not possible
 to derive contradictions, it is consistent.
+
+=== Gödel’s theorem usage for task solving
+
+This theorem gives us new method to conclude that some formula $F$ is derivable
+in classical predicate logic: instead of trying to derive $F$ by using axioms,
+rules of inference, deduction theorem, T 2.3.1 and other helping tools, we can
+just prove that $F$ is logically valid (by showing that none of interpretations
+can make it false). If we manage to do so, then we can announce: according to
+Gödel’s theorem, $F$ is derivable in classical predicate logic
+$[L_1−L_15,#[MP],#[Gen]]$.
+
+
+= Tableaux algorithm
+
+== Step 1.
+
+We will solve the task from the opposite: append to the hypotheses $F_1, dots
+F_n$ negation of formula $G$, and obtain the set $F_1, dots, F_n, ¬G$. When you
+will do homework or test, you shouldn’t forget this, because if you work with
+the set $F_1, ..., F_n, G$, then obtained result will not give an answer
+whether $G$ is derivable or not. You should keep this in mind also when the
+task has only one formula, e.g., verify, whether formula $(A→B)→((B→C)→(A→C))$
+is derivable. Then from the beginning you should append negation in front:
+¬((A→B)→((B→C)→(A→C))) and then work further. Instead of the set $F_1, dots,
+F_n, ¬G$ we can always check one formula $F_1∧...∧F_n∧¬G$. Therefore, our task
+(theoretically) is reducing to the task: given some predicate language formula
+F, verify, whether it is satisfiable or not.
+
+== Step 2.
+
+Before applying the algorithm, you first should translate formula to the
+so-called negation normal form. We can use the possibilities provided by
+Substitution theorem. First, implications are replaced with negations and
+disjunctions:
+
+$
+(A→B)↔¬A∨B
+$
+
+Then we apply de Morgan laws to get negations close to the atoms:
+
+$
+¬(A∨B)↔¬A∧¬B equiv \ 
+¬(A∧B)↔¬A∨¬B 
+$
+
+In such way all negations are carried exactly before atoms.
+After that we can remove double negations:
+
+$
+¬¬A↔A
+$
+
+Example: $(p→q)→q$.
+
+First get rid of implications: $¬(¬p∨q)∨q$.
+
+Then apply de Morgan law: $(¬¬p∧¬q)∨q$.
+
+Then get rid of double negations: $(p∧¬q)∨q$.
+
+Now we have obtained equivalent formula in negation normal form – formula only
+has conjunctions and disjunctions, and all negations appear only in front of
+atoms.
+
+== Step 3.
+
+Next, we should build a tree, vertices of which are formulas. In the root of
+the tree we put our formula. Then we have two cases.
+
++ If vertex is formula A∧B, then each branch that goes through this vertex is
+  extended with vertices A and B.
++ If vertex is a formula A∨B, then in place of continuation we have branching
+  into vertex A and vertex B.
+
+In both cases, the initial vertex is marked as processed. Algorithm continues
+to process all cases 1 and 2 until all non-atomic vertices have been processed.
+
+== Step 4.
+
+When the construction of the tree is finished, we need to analyze and make
+conclusions. When one branch has some atom both with and without a negation
+(e.g., $A$ and $¬A$), then it is called closed branch. Other branches are
+called open branches.
+
+*Theorem.* If in constructed tree, there exists at least one open branch, then
+formula in the root is satisfiable. And vice versa – if all branches in the
+tree are closed, then formula in the root is unsatisfiable.
