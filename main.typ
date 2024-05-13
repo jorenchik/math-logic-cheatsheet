@@ -66,6 +66,10 @@ $bold(L_14): ∀x(G ->F (x))->(G->∀x F (x)) $
 $bold(L_15): ∀x(F (x) -> G) -> (exists x F (x)->G)$
 Šī formula pieņem, ka G nav atkarīgs no x.
 
+$bold(#[MP]): A; A -> B tack B$ jeb $(A; A -> B)/B$
+
+$bold(#[Gen]): F(t) tack forall x F(x)$ jeb $F(t)/(forall x F(x))$
+
 = Theorems
 
 == Proving directly
@@ -104,7 +108,7 @@ $[L_1, L_2, L_14, T, #[MP], #[Gen]]: A_1, A_2, dots, A_n├ B→C$.
 
 == Conjunction 
 
-=== Theorem 2.2.1. jeb C-introduction un C-elimination
+=== Theorem 2.2.1. (C-introduction un C-elimination)
 
 + (C-introduction): $[L_5, #[MP]]: A, B├ A∧B$;
 + (C-elimination): $[L_3, L_4, #[MP]]: A∧B ├ A, A∧B ├ B$.
@@ -129,7 +133,7 @@ $[L_1- L_5, #[MP]]$:
 
 + $A↔A$ (reflexivity),
 + $(A↔B)→(B↔A)$ (symmetry),
-+ $(A↔B)→((B↔C) →((A↔C))$ (transitivity).
++ $(A↔B)→((B↔C) →(A↔C))$ (transitivity).
 
 
 == Disjunction
@@ -137,8 +141,8 @@ $[L_1- L_5, #[MP]]$:
 === Theorem 2.3.1 (D-introduction un D-elimination)
 
 + (D-introduction)$[L_6, L_7, #[MP]]: A├ A∨B; B├ A∨B$; 
-+ (D-elimination) If there is a proof $[T, #[MP]]: A_1, A_2, ..., A_n, B├ D$,
-  and a proof $[T, #[MP]]: A_1, A_2, ..., A_n, C├ D$, then there is a proof $[T,
++ (D-elimination) If there is a proof $[T, #[MP]]: A_1, A_2, dots, A_n, B├ D$,
+  and a proof $[T, #[MP]]: A_1, A_2, dots, A_n, C├ D$, then there is a proof $[T,
 L_1, L_2, L_8, #[MP]]: A_1, A_2, dots, A_n, B∨C ├ D$. 
 
 
