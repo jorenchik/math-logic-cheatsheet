@@ -535,6 +535,18 @@ true in at least one interpretation [*satisfiable functions* (Latv. *izpildāmas
 funkcijas*)].
 
 
+=== Note on information of LVF
+
+A logically valid formula is true independently of its "meaning" − the
+particular interpretations of constants, functions and predicates used in it.
+But note that here, the (classical!) “meanings” of propositional connectives
+and quantifiers remain fixed.
+
+Hence, in a sense, logically valid formulas are “content-free”: being true in
+all interpretations, they do not provide any specific information about the
+features of objects they are “speaking” about.
+
+
 === Prooving an F is LVF (Latv. LVD)
 
 First, we should learn to prove that some formula is (if really is!) logically
@@ -585,8 +597,44 @@ $
 
 become true, and so becomes the entire formula.
 
+=== Consistency
 
-== Gödel's Completeness Theorem
+Sometimes,  a  seemingly  plausible  set  of  axioms  allows  deriving  of
+contradictions (the most striking example − Russell's paradox in the "naive"
+set theory). A formula F is called a contradiction in the theory T, if $[T]:├
+F$ and $[T]:├ ¬F$, i.e., if T both proves and disproves F. Theories allowing to
+derive contradictions are called  inconsistent theories. Thus, T is called a
+consistent theory if and only if T does not allow deriving of contradictions.
+
+Normally, for a first order theory, the set of all theorems is infinite, and,
+therefore, consistency cannot be verified empirically. We may only hope to
+establish this desirable property by means of some  theoretical proof (see
+Podnieks [1997], Section 5.4 for a more detailed discussion of this problem).
+For theories adopting the above logical axioms, inconsistency is, in a sense,
+"the worst possible property". 
+
+Indeed, the axiom $L_10: ¬B→( B→C)$ says that in an inconsistent theory
+anything is provable. In Exercise 1.4.2 we will − without L10 − prove 50% of
+it: $[L_1, L_9, #[MP]]: B, ¬B├ ¬C$. Thus, even without $L_10$ (but with $L_1$):
+in an inconsistent theory anything is disprovable. Is consistency enough for a
+theory to be "perfect", “non-empty” etc? In Section 4.3 we will prove the
+so-called Model Existence Theorem: if a first order theory is consistent, then
+there is a "model" (a kind of a "mathematical reality") where all its axioms
+and theorems are "true", i.e., a consistent theory is at least “non-empty”.
+
+== Completeness
+
+T is called a complete theory if and only if for each closed formula F in the
+language of $T: [T]:├ F$ or $[T]:├ ¬F$, i.e., if and only if T proves or
+disproves any closed formula of its language. In other words: a complete theory
+can solve any problem from the domain of its competence.
+
+In an incomplete theory, some closed formulas ("definite assertions about the
+objects of theory") can be neither proved, not disproved. Thus, an incomplete
+theory  does  not  solve  some  of  the  problems  from  the  domain  of  its
+competence.
+
+=== Gödel's Completeness Theorem
 
 *Theorem 4.3.1.* In classical predicate logic $[L_1−L_15,#[MP],#[Gen]]$ all
 logically valid formulas can be derived.
@@ -594,6 +642,13 @@ logically valid formulas can be derived.
 *Theorem 4.3.3.* All formulas that can be derived in classical predicate logic
 $[L_1−L_15,#[MP],#[Gen]]$ are logically valid. In this logic it is not possible
 to derive contradictions, it is consistent.
+
+=== Gödel's Incompleteness Theorem
+
+Gödel's Incompleteness Theorem says that all  fundamental  mathematical
+theories  are  either  inconsistent  or incomplete, i.e., none of them is
+absolutely perfect (see Mendelson [1997] or Podnieks [1997], Section 6.1). 
+
 
 === Gödel’s theorem usage for task solving
 
