@@ -7,8 +7,6 @@
  ),
 )
 
-
-
 #set heading(numbering: "1.")
 
 
@@ -18,7 +16,6 @@
   v(12pt, weak: true)
   strong(it)
 }
-
 
 #set enum(numbering: "a)")
 
@@ -30,9 +27,6 @@
 // }
 
 #outline(indent: auto)
-
-
-
 
 = Logical axiom schemes
 
@@ -125,7 +119,6 @@ $[L_1- L_5, #[MP]]$:
 + $(A↔B)→(B↔A)$ (symmetry),
 + $(A↔B)→((B↔C) →((A↔C))$ (transitivity).
 
-
 == Disjunction
 
 === Theorem 2.3.1
@@ -134,7 +127,6 @@ $[L_1- L_5, #[MP]]$:
 + (D-elimination) If there is a proof $[T, #[MP]]: A_1, A_2, ..., A_n, B├ D$,
   and a proof $[T, #[MP]]: A_1, A_2, ..., A_n, C├ D$, then there is a proof $[T,
 L_1, L_2, L_8, #[MP]]: A_1, A_2, dots, A_n, B∨C ├ D$. 
-
 
 === Theorem 2.3.2
 
@@ -211,7 +203,6 @@ b) $[L_1, L_2, L_6, L_7, L_9, #[MP]]: ¬¬( A∨¬A)$. What does it mean? This i
 + $[L_1, L_2, L_6, #[MP]]: A∨B→(¬A→B) ├¬A→(A→B)$ .  It means that the “natural”
   rule $A∨B ;¬ A ├ B$ implies $L_10$!
 
-
 === Theorem 2.5.2. 
 
 $[L_1-L_10, #[MP]]$:
@@ -249,17 +240,14 @@ _(another one with the same number of because numbering error (it seems like it)
 $[L_1-L_9, L_11, #[MP]]: ˫ ¬(A∧B)→¬A∨¬B$ . Hence, $[L_1-L_9, L_11, #[MP]]: ˫
 ¬(A∧B)↔¬A∨¬B$ .
 
-
 === Theorem 2.6.4.
 
 $[L_1-L_8, L_11, #[MP]]: (A→B)→¬ A∨B $. Hence, (I-elimination) $[L_1-L_11, #[MP]]:
 (A→B)↔¬ A∨B$.
 
-
 === Theorem 2.6.5.
 
 $[L_1-L_11, #[MP]]: ¬(A→B)→A∧¬B $. 
-
 
 === Theorem 2.7.1 (Glivenko's Theorem).
 
@@ -276,8 +264,9 @@ L_11, #[MP]]$.
 
 The axiom $L_9$ cannot be proved in $[L_1-L_8, L_10, #[MP]]$.
 
+== Replacement Theorems
 
-== Replacement Theorem 1
+=== Replacement Theorem 1
 
 Let us consider three formulas: $B$, $B'$, $C$, where $B$ is a sub-formula of
 $C$, and $o(B)$ is a propositional occurrence of $B$ in $C$. Let us denote by
@@ -286,7 +275,7 @@ minimal logic,
 
 $[L_1-L_9, #[MP]]: B↔B'├ C↔C'$.
 
-== Replacement Theorem 2
+=== Replacement Theorem 2
 
 Let us consider three formulas: $B$, $B'$, $C$, where $B$ is a sub-formula of
 $C$, and $o(B)$ is any occurrence of $B$ in $C$. Let us denote by $C'$ the
@@ -295,63 +284,69 @@ logic,
 
 $[L_1-L_9, L_12-L_15, #[MP], #[Gen]]: B↔B'├ C↔C'$.
 
+== Predicate Logic 
 
-== Theorem 3.1.1.
+=== Theorem 3.1.1.
 
-$[L_1, L_2, L_12, L_13, #[MP]]: forall x B(x) arrow exists x B(x)$ . What does it
-mean? It prohibits "empty domains".
+$[L_1, L_2, L_12, L_13, #[MP]]: forall x B(x) arrow exists x B(x)$. What does
+it mean? It prohibits "empty domains".
 
+=== Theorem 3.1.2.
 
-Theorem 3.1.2.
++ $[L_1, L_2, L_12, L_14, #[MP], #[Gen]]: ∀x(B→C)→(∀x B → ∀x C)$.
++ $[L_1, L_2, L_12-L_15, #[MP], #[Gen]]: ∀x(B→C)→(∃z B → ∃x C)$.
 
-+ [L1, L2, L12, L14, MP, Gen]: ∀x(B→C)→(∀x B→∀xC).
-+ [L1, L2, L12-L15, MP, Gen]: ∀x(B→C)→(∃z(x+z+1=y).x B→∃z(x+z+1=y).xC).
-
-
-== Theorems 3.1.3.
+=== Theorems 3.1.3.
 
 If F is any formula, then:
 
-+ (U-introduction) [Gen]: F(x) ├∀x F(x) .
-+ (U-elimination)  [L12, MP, Gen]: ∀x F(x) ├F(x) . What does it mean?
-+ (E-introduction)  [L13, MP, Gen]: F(x) ├∃z(x+z+1=y).x F(x) . What does it mean?
++ (U-introduction) $[#[Gen]]: F(x) ├∀x F(x)$ .
++ (U-elimination)  $[L_12, #[MP], #[Gen]]: ∀x F(x) ├F(x)$.
++ (E-introduction) $[L_13, #[MP], #[Gen]]: F(x) ├ ∃x F(x)$. 
 
-
-== Theorems 3.1.4. 
+=== Theorems 3.1.4. 
 
 If F is any formula, and G is a formula that does not contain free occurrences of x, then:
 
-+ (U2-introduction) [L14, MP, Gen] G →F (x) ├G →∀x F (x) . What does it mean?
-+ (E2-introduction) [L15, MP, Gen]: F (x)→G ├∃z(x+z+1=y).x F (x)→G . What does it mean?
++ (U2-introduction) $[L_14, #[MP], #[Gen]] G →F (x) ├G →∀x F (x)$.
++ (E2-introduction) $[L_15, #[MP], #[Gen]]: F (x)→G ├ ∃ x F (x)→G$.
 
-== Theorem 3.1.5.
+=== Theorem 3.1.5.
 
-+ [L1, L2, L5, L12, L14, MP, Gen]: $forall x forall y B(x,y) ↔ forall y forall x B(x,y)$
-+ [L1, L2, L5, L13, L15, MP, Gen]: $exists x exists y B(x,y) ↔ exists y exists x B(x,y)$.
-+ [L1, L2, L12-L15, MP, Gen]: $exists x forall y B(x,y) ↔ forall y exists x B(x,y)$.
++ $[L_1, L_2, L_5, L_12, L_14, #[MP], #[Gen]]: forall x forall y B(x,y) ↔
+  forall y forall x B(x,y)$
++ $[L_1, L_2, L_5, L_13, L_15, #[MP], #[Gen]]: exists x exists y B(x,y) ↔
+  exists y exists x B(x,y)$.
++ $[L_1, L_2, L_12-L_15, #[MP], #[Gen]]: exists x forall y B(x,y) ↔ forall y
+  exists x B(x,y)$.
 
+=== Theorem 3.1.6. 
 
-Theorem 3.1.6. If the formula B does not contain free occurrences of x, then
-[L1-L2,  L12-L15,  MP,  Gen]: (∀x B)↔B;(∃z(x+z+1=y).x B)↔B ,  i.e.,  quantifiers
-∀x ;∃z(x+z+1=y). x can be dropped or introduced as needed.
+If the formula B does not contain free occurrences of x, then $[L_1-L_2,
+L_12-L_15,  #[MP],  #[Gen]]: (∀x B)↔B;(∃x B)↔B$,  i.e.,  quantifiers $∀ x ; ∃
+x$ can be dropped or introduced as needed.
 
-Theorem 3.2.1. In the classical logic,
- [L1-L15, MP, Gen]:  ¬
-x¬B 
-∀
-↔ xB.
+== Formulas Containing Negations and a Single Quantifier
+
+== Theorem 3.2.1. 
+
+In the classical logic,
+
+$[L_1-L_15, #[MP], #[Gen]]:  ¬ ∀x ¬B ↔ ∀x B$.
 
 
 == Theorem 3.3.1. 
 
-+ [L1-L5, L12, L14, MP, Gen]: ∀x(B∧C)↔∀x B∧∀xC .
-+ [L1, L2, L6-L8, L12, L14, MP, Gen]: ├∀x B∨∀xC →∀x(B∨C) . The converse  formula ∀x(B∨C)→∀x B∨∀xC cannot  be  true.  Explain, why.
++ $[L_1-L_5, L_12, L_14, #[MP], #[Gen]]: ∀x(B∧C)↔∀x B∧∀x C$ .
++ $[L_1, L_2, L_6-L_8, L_12, L_14, #[MP], #[Gen]]: ├∀x B∨∀x C →∀x(B∨C)$. The converse
+  formula $∀x(B∨C)→∀x$ B∨∀xC cannot  be  true.
 
 
 == Theorem 3.3.2.
 
-a) [L1-L8, L12-L15, MP, Gen]: ∃z(x+z+1=y).x(B∨C)↔∃z(x+z+1=y). x B∨∃z(x+z+1=y).xC .
-b) [L1-L5, L13-L15, MP, Gen]: ∃z(x+z+1=y).x(B∧C)→∃z(x+z+1=y). x B∧∃z(x+z+1=y).xC . The converse implication ∃z(x+z+1=y).x B∧∃z(x+z+1=y). xC →∃z(x+z+1=y). x(B∧C) cannot be true. Explain, why. Exercise 3.3.3. a) Prove (a→) of Theorem 3.3.2. (Hint: start by assuming B∨C , apply D-elimination, etc., and finish by E2-introduction.)
++ $[L_1-L_8, L_12-L_15, #[MP], #[Gen]]: ∃x(B∨C)↔∃x B∨∃x C$.
++ $[L_1-L_5, L_13-L_15, #[MP], #[Gen]]: ∃x(B∧C)→∃x B∧∃x C$. The converse
+  implication $∃ x B∧∃x C →∃ x(B∧C)$ cannot be true.
 
 = Three-valued logic
 
@@ -411,8 +406,8 @@ entities (a set and a mapping):
 + A mapping intJ that assigns: 
   - to each object constant $c_i$ – a member $#[int]_J (c_i)$ of the domain
     $D_J$ [contstant corresponds to an object from domain];
-  - to each function constant $f_i$ – a function $#[int]_J (f_i)$ from $D_J times dots 
-    times D_J$ into $D_J$ [],
+  - to each function constant $f_i$ – a function $#[int]_J (f_i)$ from $D_J
+    times dots times D_J$ into $D_J$ [],
   - to each predicate constant $p_i$ – a predicate $#[int]_J (p_i)$ on $D_J$.
 
 Having an interpretation $J$ of the language $L$, we can define the notion of
