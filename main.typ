@@ -35,9 +35,6 @@
 
 #outline(indent: auto)
 
-
-
-
 = Logical axiom schemes
 
 $bold(L_1): B -> (C -> B)$ – Patiesas formulas var secināt no jebkuras formulas.
@@ -232,7 +229,6 @@ $[L_1, L_2, L_9, #[MP]]: A→¬¬A$.
 + $[L_1, L_2, L_6, #[MP]]: A∨B→(¬A→B) ├¬A→(A→B)$ .  It means that the “natural”
   rule $A∨B ;¬ A ├ B$ implies $L_10$!
 
-
 === Theorem 2.5.2. 
 
 $[L_1-L_10, #[MP]]$:
@@ -276,11 +272,9 @@ $[L_1-L_9, L_11, #[MP]]: ˫ ¬(A∧B)→¬A∨¬B$ . Hence, $[L_1-L_9, L_11, #[M
 $[L_1-L_8, L_11, #[MP]]: (A→B)→¬ A∨B $. Hence, (I-elimination) $[L_1-L_11, #[MP]]:
 (A→B)↔¬ A∨B$.
 
-
 === Theorem 2.6.5.
 
 $[L_1-L_11, #[MP]]: ¬(A→B)→A∧¬B $. 
-
 
 === Theorem 2.7.1 (Glivenko's Theorem).
 
@@ -334,12 +328,14 @@ Vienkāršotā valodā, ir atļauts jebkurā formulā aizstāt vienu daļu ar ci
 === Theorem 3.1.1.
 
 $[L_1, L_2, L_12, L_13, #[MP]]: forall x B(x) arrow exists x B(x)$ . What does it mean? It prohibits "empty domains" jeb ja kaut kas ir patiess visiem, tad tas ir patiess vismaz vienam.
+$[L_1, L_2, L_12, L_13, #[MP]]: forall x B(x) arrow exists x B(x)$. What does
+it mean? It prohibits "empty domains".
 
 
 === Theorem 3.1.2.
 
-+ [L1, L2, L12, L14, MP, Gen]: ∀x(B→C)→(∀x B→∀xC).
-+ [L1, L2, L12-L15, MP, Gen]: ∀x(B→C)→(∃z(x+z+1=y).x B→∃z(x+z+1=y).xC).
++ $[L_1, L_2, L_12, L_14, #[MP], #[Gen]]: ∀x(B→C)→(∀x B → ∀x C)$.
++ $[L_1, L_2, L_12-L_15, #[MP], #[Gen]]: ∀x(B→C)→(∃z B → ∃x C)$.
 
 
 === Theorems 3.1.3. (U-introduction, U-elimination, E-introduction)
@@ -360,9 +356,12 @@ If F is any formula, and G is a formula that does not contain free occurrences o
 
 === Theorem 3.1.5.
 
-+ [L1, L2, L5, L12, L14, MP, Gen]: $forall x forall y B(x,y) ↔ forall y forall x B(x,y)$
-+ [L1, L2, L5, L13, L15, MP, Gen]: $exists x exists y B(x,y) ↔ exists y exists x B(x,y)$.
-+ [L1, L2, L12-L15, MP, Gen]: $exists x forall y B(x,y) ↔ forall y exists x B(x,y)$.
++ $[L_1, L_2, L_5, L_12, L_14, #[MP], #[Gen]]: forall x forall y B(x,y) ↔
+  forall y forall x B(x,y)$
++ $[L_1, L_2, L_5, L_13, L_15, #[MP], #[Gen]]: exists x exists y B(x,y) ↔
+  exists y exists x B(x,y)$.
++ $[L_1, L_2, L_12-L_15, #[MP], #[Gen]]: exists x forall y B(x,y) ↔ forall y
+  exists x B(x,y)$.
 
 
 === Theorem 3.1.6. 
@@ -472,8 +471,8 @@ entities (a set and a mapping):
 + A mapping intJ that assigns: 
   - to each object constant $c_i$ – a member $#[int]_J (c_i)$ of the domain
     $D_J$ [contstant corresponds to an object from domain];
-  - to each function constant $f_i$ – a function $#[int]_J (f_i)$ from $D_J times dots 
-    times D_J$ into $D_J$ [],
+  - to each function constant $f_i$ – a function $#[int]_J (f_i)$ from $D_J
+    times dots times D_J$ into $D_J$ [],
   - to each predicate constant $p_i$ – a predicate $#[int]_J (p_i)$ on $D_J$.
 
 Having an interpretation $J$ of the language $L$, we can define the notion of
@@ -601,7 +600,19 @@ true in at least one interpretation [*satisfiable formulas* (Latv. *izpildāmas
 formulas*)].
 
 
-=== Prooving an F is LVF (Latv. LVD)
+=== Note on information of LVF
+
+A logically valid formula is true independently of its "meaning" − the
+particular interpretations of constants, functions and predicates used in it.
+But note that here, the (classical!) “meanings” of propositional connectives
+and quantifiers remain fixed.
+
+Hence, in a sense, logically valid formulas are “content-free”: being true in
+all interpretations, they do not provide any specific information about the
+features of objects they are “speaking” about.
+
+
+=== Proving an F is LVF (Latv. LVD)
 
 First, we should learn to prove that some formula is (if really is!) logically
 valid. Easiest way to do it by reasoning from the opposite: suppose that exists
@@ -612,7 +623,7 @@ logically valid. Check pages 125-126 of the book for example of such proof
 check it, because in such way you will need to solve tasks in homeworks and
 tests.
 
-=== Prooving an F is satisfiable but NOT LVF 
+=== Proving an F is satisfiable but NOT LVF 
 
 As an example, let us verify that the formula
 
@@ -651,8 +662,44 @@ $
 
 become true, and so becomes the entire formula.
 
+=== Consistency
 
-== Gödel's Completeness Theorem
+Sometimes,  a  seemingly  plausible  set  of  axioms  allows  deriving  of
+contradictions (the most striking example − Russell's paradox in the "naive"
+set theory). A formula F is called a contradiction in the theory T, if $[T]:├
+F$ and $[T]:├ ¬F$, i.e., if T both proves and disproves F. Theories allowing to
+derive contradictions are called  inconsistent theories. Thus, T is called a
+consistent theory if and only if T does not allow deriving of contradictions.
+
+Normally, for a first order theory, the set of all theorems is infinite, and,
+therefore, consistency cannot be verified empirically. We may only hope to
+establish this desirable property by means of some  theoretical proof (see
+Podnieks [1997], Section 5.4 for a more detailed discussion of this problem).
+For theories adopting the above logical axioms, inconsistency is, in a sense,
+"the worst possible property". 
+
+Indeed, the axiom $L_10: ¬B→( B→C)$ says that in an inconsistent theory
+anything is provable. In Exercise 1.4.2 we will − without L10 − prove 50% of
+it: $[L_1, L_9, #[MP]]: B, ¬B├ ¬C$. Thus, even without $L_10$ (but with $L_1$):
+in an inconsistent theory anything is disprovable. Is consistency enough for a
+theory to be "perfect", “non-empty” etc? In Section 4.3 we will prove the
+so-called Model Existence Theorem: if a first order theory is consistent, then
+there is a "model" (a kind of a "mathematical reality") where all its axioms
+and theorems are "true", i.e., a consistent theory is at least “non-empty”.
+
+== Completeness
+
+T is called a complete theory if and only if for each closed formula F in the
+language of $T: [T]:├ F$ or $[T]:├ ¬F$, i.e., if and only if T proves or
+disproves any closed formula of its language. In other words: a complete theory
+can solve any problem from the domain of its competence.
+
+In an incomplete theory, some closed formulas ("definite assertions about the
+objects of theory") can be neither proved, not disproved. Thus, an incomplete
+theory  does  not  solve  some  of  the  problems  from  the  domain  of  its
+competence.
+
+=== Gödel's Completeness Theorem
 
 *Theorem 4.3.1.* In classical predicate logic $[L_1 dash L_15,#[MP],#[Gen]]$ all
 logically valid formulas can be derived.
@@ -664,6 +711,13 @@ $[L_1 dash L_15,#[MP],#[Gen]]$ are logically valid. In this logic it is not poss
 to derive contradictions, it is consistent.
 
 Visas formulas, kuras var izvest klasiskajā predikātu loģikā, ir loģiski vispārderīgas (LVD).
+
+=== Gödel's Incompleteness Theorem
+
+Gödel's Incompleteness Theorem says that all  fundamental  mathematical
+theories  are  either  inconsistent  or incomplete, i.e., none of them is
+absolutely perfect (see Mendelson [1997] or Podnieks [1997], Section 6.1). 
+
 
 === Gödel’s theorem usage for task solving
 
