@@ -17,6 +17,12 @@
   strong(it)
 }
 
+#show outline.entry.where(
+  level: 2
+): it => {
+  strong(it)
+}
+
 
 #set enum(numbering: "a)")
 
@@ -295,8 +301,8 @@ Ir dīvaini, bet tas strādā.
 
 The axiom $L_9$ cannot be proved in $[L_1-L_8, L_10, #[MP]]$.
 
-
-== Replacement Theorem 1
+== Replacement Theorems
+=== Replacement Theorem 1
 
 Let us consider three formulas: $B$, $B'$, $C$, where $B$ is a sub-formula of
 $C$, and $o(B)$ is a propositional occurrence of $B$ in $C$. Let us denote by
@@ -310,7 +316,7 @@ Vienkāršotā valodā, ir atļauts jebkurā formulā aizstāt vienu daļu ar ci
 Kā piemērs,
 $[L_1-L_9, #[MP]]: A <-> C tack X->(A->Y) <-> X->(C->Y) $
 
-== Replacement Theorem 2
+=== Replacement Theorem 2
 
 Let us consider three formulas: $B$, $B'$, $C$, where $B$ is a sub-formula of
 $C$, and $o(B)$ is any occurrence of $B$ in $C$. Let us denote by $C'$ the
@@ -323,19 +329,20 @@ Vienkāršotā valodā, ir atļauts jebkurā formulā aizstāt vienu daļu ar ci
 
 Šī formula ir tāda pati kā Replacement Theorem 1, bet ar kvantoriem. Tā pieprasa arī Generalization un $L_12-L_15$ aksiomas.
 
+== Predicate logic (Predikātu loģika)
 
-== Theorem 3.1.1.
+=== Theorem 3.1.1.
 
 $[L_1, L_2, L_12, L_13, #[MP]]: forall x B(x) arrow exists x B(x)$ . What does it mean? It prohibits "empty domains" jeb ja kaut kas ir patiess visiem, tad tas ir patiess vismaz vienam.
 
 
-== Theorem 3.1.2.
+=== Theorem 3.1.2.
 
 + [L1, L2, L12, L14, MP, Gen]: ∀x(B→C)→(∀x B→∀xC).
 + [L1, L2, L12-L15, MP, Gen]: ∀x(B→C)→(∃z(x+z+1=y).x B→∃z(x+z+1=y).xC).
 
 
-== Theorems 3.1.3. (U-introduction, U-elimination, E-introduction)
+=== Theorems 3.1.3. (U-introduction, U-elimination, E-introduction)
 
 If F is any formula, then:
 
@@ -344,39 +351,39 @@ If F is any formula, then:
 + (E-introduction)  [L13, MP, Gen]: F(x) ├∃z(x+z+1=y).x F(x) . What does it mean?
 
 
-== Theorems 3.1.4. (U2-introduction, E2-introduction)
+=== Theorems 3.1.4. (U2-introduction, E2-introduction)
 
 If F is any formula, and G is a formula that does not contain free occurrences of x, then:
 
 + (U2-introduction) [L14, MP, Gen] G →F (x) ├G →∀x F (x) . What does it mean?
 + (E2-introduction) [L15, MP, Gen]: F (x)→G ├∃z(x+z+1=y).x F (x)→G . What does it mean?
 
-== Theorem 3.1.5.
+=== Theorem 3.1.5.
 
 + [L1, L2, L5, L12, L14, MP, Gen]: $forall x forall y B(x,y) ↔ forall y forall x B(x,y)$
 + [L1, L2, L5, L13, L15, MP, Gen]: $exists x exists y B(x,y) ↔ exists y exists x B(x,y)$.
 + [L1, L2, L12-L15, MP, Gen]: $exists x forall y B(x,y) ↔ forall y exists x B(x,y)$.
 
 
-== Theorem 3.1.6. 
+=== Theorem 3.1.6. 
 If the formula B does not contain free occurrences of x, then
 $[L_1-L_2,  L_12-L_15,  #[MP],  #[Gen]]: (∀x B)↔B; (exists x B) <-> B$ jeb ja kvantora mainīgais neparādās iekš B, tad to
 kvantoru var brīvi pielikt vai noņemt.
 
 
 
-== Theorem 3.2.1. 
+=== Theorem 3.2.1. 
 In the classical logic,
 $[L_1-L_15, #[MP], #[Gen]]: not forall x not B <-> exists B $.
 
 Ja kaut kas nav patiess visiem, tad vismaz viens ir patiess.
 
-== Theorem 3.3.1. 
+=== Theorem 3.3.1. 
 
 + [L1-L5, L12, L14, MP, Gen]: ∀x(B∧C)↔∀x B∧∀xC .
 + [L1, L2, L6-L8, L12, L14, MP, Gen]: ├∀x B∨∀xC →∀x(B∨C) . The converse  formula ∀x(B∨C)→∀x B∨∀xC cannot  be  true.
 
-== Theorem 3.3.2.
+=== Theorem 3.3.2.
 
 + [L1-L8, L12-L15, MP, Gen]: ∃z(x+z+1=y).x(B∨C)↔∃z(x+z+1=y). x B∨∃z(x+z+1=y).xC .
 + [L1-L5, L13-L15, MP, Gen]: ∃z(x+z+1=y).x(B∧C)→∃z(x+z+1=y). x B∧∃z(x+z+1=y).xC . The converse implication ∃z(x+z+1=y).x B∧∃z(x+z+1=y). xC →∃z(x+z+1=y). x(B∧C) cannot be true.
