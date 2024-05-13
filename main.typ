@@ -37,29 +37,29 @@
 
 = Logical axiom schemes
 
-$bold(L_1): B→(C →B)$
+$bold(L_1): B→(C →B)$ – Patiesas formulas var secināt no jebkuras formulas.
 
-$bold(L_2):  (B→(C →D))→((B→C)→( B→D))$
+$bold(L_2):  (B→(C →D))→((B→C)→( B→D))$ – Implikāciju transitivitāte
 
-$bold(L_3): B∧C→B$
+$bold(L_3): B∧C→B$ – Konjunkcijas dekonstrukcija
 
-$bold(L_4): B∧C→C$
+$bold(L_4): B∧C→C$ – Konjunkcijas dekonstrukcija
 
-$bold(L_5): B→(C →B∧C)$
+$bold(L_5): B→(C →B∧C)$ – Konjunkcijas konstrukcija
 
-$bold(L_6): B→B∨C$
+$bold(L_6): B→B∨C$ – Disjunkcijas konstrukcija
 
-$bold(L_7): C →B∨C$
+$bold(L_7): C →B∨C$ – Disjunkcijas konstrukcija
 
-$bold(L_8): (B→D)→((C →D)→(B∨C →D))$
+$bold(L_8): (B→D)→((C →D)→(B∨C →D))$ – Disjunktīvas implikācijas veidošana
 
-$bold(L_9): (B→C)→((B→¬C )→¬B)$
+$bold(L_9): (B→C)→((B→¬C )→¬B)$ – Pretrunīgas izteiksmes nevar būt patiesas
 
-$bold(L_10): ¬B→( B→C)$
+$bold(L_10): ¬B→( B→C)$ – No pretrunas var secināt jebko
 
-$bold(L_11): B∨¬B$
+$bold(L_11): B∨¬B$ – Izslēgšanas likums jeb jebkura izteiksme ir patiesa vai nepatiesa
 
-$bold(L_12):  ∀x F (x)→F (t)$  (in particular, $∀x F (x)→F (x)$)
+$bold(L_12):  ∀x F (x)→F (t)$  (in particular, $∀x F (x)→F (x)$) – Ja funkcija izpildās visiem variantiem, tad tā izpildās arī konkrētam variantam.
 
 $bold(L_13):  F (t)→∃ x F( x)$  (in  particular, $F (x)→∃ x F (x)$)
 
@@ -69,7 +69,7 @@ $bold(L_15): ∀x(F (x) arrow G) arrow (exists x F (x)→G)$
 
 = Theorems
 
-== Prooving directly
+== Proving directly
 
 $[L_1, L_2, #[MP]]$:
 
@@ -85,12 +85,18 @@ $[L_1, L_2, #[MP]]$:
 
 === Theorem 1.5.1 (Deduction Theorem 1 AKA DT1)
 
-If $T$ is a first order theory, and there is a proof of
-$[T, #[MP]]: A_1, A_2, dots, A_n, B├ C$,
- then there is a proof of
-$[L_1, L_2, T, #[MP]]: A_1, A_2, dots, A_n├ B→C$.
+#text(weight:"bold")[
+  Šo teorēmu izmantot tikai, ja netiek lietoti kvantori.
+]
+
+Ja $T$ ir pirmās kārtas teorija, un ir pierādījums
+$[T, #[MP]]: A_1, A_2, dots, A_n, B tack C$,
+tad ir pierādījums $[T, #[MP]]: A_1, A_2, dots, A_n tack B→C$.
+
+
 
 === Theorem 1.5.2 (Deduction Theorem 2 AKA DT2)
+
 
 If there is a proof $[T, #[MP], #[Gen]]: A_1, A_2, dots, A_n, B├ C$,
 where, after B appears in the proof, Generalization is not applied to the
@@ -99,7 +105,7 @@ $[L_1, L_2, L_14, T, #[MP], #[Gen]]: A_1, A_2, dots, A_n├ B→C$.
 
 == Conjunction 
 
-=== Theorem 2.2.1.
+=== Theorem 2.2.1. jeb C-introduction un C-elimination
 
 + (C-introduction): $[L_5, #[MP]]: A, B├ A∧B$;
 + (C-elimination): $[L_3, L_4, #[MP]]: A∧B ├ A, A∧B ├ B$.
@@ -110,7 +116,7 @@ $[L_1, L_2, L_14, T, #[MP], #[Gen]]: A_1, A_2, dots, A_n├ B→C$.
 + $[L_1-L_4, #[MP]]: (A→B)∧( B→C)→( A→C)$ (another form of the *Law of
   Syllogism*, or *transitivity property of implication*).
 
-=== Theorem 2.2.3 (properties of the conjunction connective).
+=== Theorem 2.2.3 (konjunkcijas īpašības).
 
 $[L_1- L_5, #[MP]]$:
 
@@ -118,7 +124,7 @@ $[L_1- L_5, #[MP]]$:
 + $ A∧(B∧C)↔( A∧B)∧C$. Conjunction  is associative.
 + $A∧A↔A$ . Conjunction is idempotent.
 
-=== Theorem 2.2.4 (properties of the equivalence connective).
+=== Theorem 2.2.4 (Ekvivalences īpašības).
 
 $[L_1- L_5, #[MP]]$:
 
@@ -129,7 +135,7 @@ $[L_1- L_5, #[MP]]$:
 
 == Disjunction
 
-=== Theorem 2.3.1
+=== Theorem 2.3.1 (D-introduction un D-elimination)
 
 + (D-introduction)$[L_6, L_7, #[MP]]: A├ A∨B; B├ A∨B$; 
 + (D-elimination) If there is a proof $[T, #[MP]]: A_1, A_2, ..., A_n, B├ D$,
@@ -139,8 +145,8 @@ L_1, L_2, L_8, #[MP]]: A_1, A_2, dots, A_n, B∨C ├ D$.
 
 === Theorem 2.3.2
 
-a) $[ L_5, L_6-L_8, #[MP]]: A∨B↔B∨A$ . Disjunction is commutative.
-b) $[L_1, L_2, L_5, L_6-L_8, #[MP]]: A∨A↔A$ . Disjunction is idempotent.
++ $[ L_5, L_6-L_8, #[MP]]: A∨B↔B∨A$ . Disjunction is commutative.
++ $[L_1, L_2, L_5, L_6-L_8, #[MP]]: A∨A↔A$ . Disjunction is idempotent.
 
 === Theorem 2.3.3.
 
@@ -165,7 +171,7 @@ conjunction:
 
 == Negation -- minimal logic
 
-=== Theorem 2.4.1.
+=== Theorem 2.4.1. (N-elimination)
 
 (N-elimination) If there is a proof
 
@@ -174,8 +180,8 @@ B├ ¬C$, then there is a  proof $[T, L_1, L_2, L_9, #[MP]]: A_1, A_2, ..., A_n
 
 === Theorem 2.4.2.
 
-a) $[L_1, L_2, L_9, #[MP]]: A, ¬B├ ¬(A→B)$. What does it mean?
-b) $[L_1-L_4, L_9, #[MP]]: A∧¬B→¬( A→B)$. 
++ $[L_1, L_2, L_9, #[MP]]: A, ¬B├ ¬(A→B)$. What does it mean?
++ $[L_1-L_4, L_9, #[MP]]: A∧¬B→¬( A→B)$.
 
 
 === Theorem 2.4.3.
@@ -192,11 +198,11 @@ $[L_1, L_2, L_9, #[MP]]: A→¬¬A$.
 
 === Theorem 2.4.5.
 
-a) $[L_1, L_2, L_9, #[MP]]: ¬¬¬A↔¬A$.
-b) $[L_1, L_2, L_6, L_7, L_9, #[MP]]: ¬¬( A∨¬A)$. What does it mean? This is a “weak
++ $[L_1, L_2, L_9, #[MP]]: ¬¬¬A↔¬A$.
++ $[L_1, L_2, L_6, L_7, L_9, #[MP]]: ¬¬( A∨¬A)$. What does it mean? This is a “weak
   form”  of  the  *Law  of  Excluded  Middle*  that  can  be  proved
   constructively. The formula $¬¬( A∨¬A)$ can be proved in the constructive logic,
-  but $A∨¬A$ can't – as we will see in Section 2.8.
+  but $A∨¬A$ can't.
 
 === Theorem 2.4.9.
 
@@ -251,7 +257,7 @@ $[L_1-L_9, L_11, #[MP]]: ˫ ¬(A∧B)→¬A∨¬B$ . Hence, $[L_1-L_9, L_11, #[M
 ¬(A∧B)↔¬A∨¬B$ .
 
 
-=== Theorem 2.6.4.
+=== Theorem 2.6.4. jeb I-elimination
 
 $[L_1-L_8, L_11, #[MP]]: (A→B)→¬ A∨B $. Hence, (I-elimination) $[L_1-L_11, #[MP]]:
 (A→B)↔¬ A∨B$.
@@ -273,6 +279,10 @@ $[L_1-L_11, #[MP]]:├ A$ if and only if $[L_1-L_10, #[MP]]:├ ¬¬A$.
 The axiom $L_9$: $(A→B)→((A→¬B)→¬A)$ can be proved in $[L_1, L_2, L_8, L_10,
 L_11, #[MP]]$.
 
+$L_9$ paliek kā aksioma, jo citādi konstruktīvā loģika būtu
+klasiskā - $L_11$ + $L_9$.
+Ir dīvaini, bet tas strādā.
+
 === Theorem 2.8.2.
 
 The axiom $L_9$ cannot be proved in $[L_1-L_8, L_10, #[MP]]$.
@@ -287,6 +297,11 @@ minimal logic,
 
 $[L_1-L_9, #[MP]]: B↔B'├ C↔C'$.
 
+Vienkāršotā valodā, ir atļauts jebkurā formulā aizstāt vienu daļu ar citu, ja tās ir ekvivalentas, pieņemot ka tajās nav kvantori.
+
+Kā piemērs,
+$[L_1-L_9, #[MP]]: A <-> C tack X->(A->Y) <-> X->(C->Y) $
+
 == Replacement Theorem 2
 
 Let us consider three formulas: $B$, $B'$, $C$, where $B$ is a sub-formula of
@@ -296,20 +311,23 @@ logic,
 
 $[L_1-L_9, L_12-L_15, #[MP], #[Gen]]: B↔B'├ C↔C'$.
 
+Vienkāršotā valodā, ir atļauts jebkurā formulā aizstāt vienu daļu ar citu, ja tās ir ekvivalentas.
+
+Šī formula ir tāda pati kā Replacement Theorem 1, bet ar kvantoriem. Tā pieprasa arī Generalization un $L_12-L_15$ aksiomas.
+
 
 == Theorem 3.1.1.
 
-$[L_1, L_2, L_12, L_13, #[MP]]: forall x B(x) arrow exists x B(x)$ . What does it
-mean? It prohibits "empty domains".
+$[L_1, L_2, L_12, L_13, #[MP]]: forall x B(x) arrow exists x B(x)$ . What does it mean? It prohibits "empty domains" jeb ja kaut kas ir patiess visiem, tad tas ir patiess vismaz vienam.
 
 
-Theorem 3.1.2.
+== Theorem 3.1.2.
 
 + [L1, L2, L12, L14, MP, Gen]: ∀x(B→C)→(∀x B→∀xC).
 + [L1, L2, L12-L15, MP, Gen]: ∀x(B→C)→(∃z(x+z+1=y).x B→∃z(x+z+1=y).xC).
 
 
-== Theorems 3.1.3.
+== Theorems 3.1.3. (U-introduction, U-elimination, E-introduction)
 
 If F is any formula, then:
 
@@ -318,7 +336,7 @@ If F is any formula, then:
 + (E-introduction)  [L13, MP, Gen]: F(x) ├∃z(x+z+1=y).x F(x) . What does it mean?
 
 
-== Theorems 3.1.4. 
+== Theorems 3.1.4. (U2-introduction, E2-introduction)
 
 If F is any formula, and G is a formula that does not contain free occurrences of x, then:
 
@@ -332,16 +350,18 @@ If F is any formula, and G is a formula that does not contain free occurrences o
 + [L1, L2, L12-L15, MP, Gen]: $exists x forall y B(x,y) ↔ forall y exists x B(x,y)$.
 
 
-Theorem 3.1.6. If the formula B does not contain free occurrences of x, then
-[L1-L2,  L12-L15,  MP,  Gen]: (∀x B)↔B;(∃z(x+z+1=y).x B)↔B ,  i.e.,  quantifiers
-∀x ;∃z(x+z+1=y). x can be dropped or introduced as needed.
+== Theorem 3.1.6. 
+If the formula B does not contain free occurrences of x, then
+$[L_1-L_2,  L_12-L_15,  #[MP],  #[Gen]]: (∀x B)↔B; (exists x B) <-> B$ jeb ja kvantora mainīgais neparādās iekš B, tad to
+kvantoru var brīvi pielikt vai noņemt.
 
-Theorem 3.2.1. In the classical logic,
- [L1-L15, MP, Gen]:  ¬
-x¬B 
-∀
-↔ xB.
 
+
+== Theorem 3.2.1. 
+In the classical logic,
+$[L_1-L_15, #[MP], #[Gen]]: not forall x not B <-> exists B $.
+
+Ja kaut kas nav patiess visiem, tad vismaz viens ir patiess.
 
 == Theorem 3.3.1. 
 
@@ -351,8 +371,8 @@ x¬B
 
 == Theorem 3.3.2.
 
-a) [L1-L8, L12-L15, MP, Gen]: ∃z(x+z+1=y).x(B∨C)↔∃z(x+z+1=y). x B∨∃z(x+z+1=y).xC .
-b) [L1-L5, L13-L15, MP, Gen]: ∃z(x+z+1=y).x(B∧C)→∃z(x+z+1=y). x B∧∃z(x+z+1=y).xC . The converse implication ∃z(x+z+1=y).x B∧∃z(x+z+1=y). xC →∃z(x+z+1=y). x(B∧C) cannot be true. Explain, why. Exercise 3.3.3. a) Prove (a→) of Theorem 3.3.2. (Hint: start by assuming B∨C , apply D-elimination, etc., and finish by E2-introduction.)
++ [L1-L8, L12-L15, MP, Gen]: ∃z(x+z+1=y).x(B∨C)↔∃z(x+z+1=y). x B∨∃z(x+z+1=y).xC .
++ [L1-L5, L13-L15, MP, Gen]: ∃z(x+z+1=y).x(B∧C)→∃z(x+z+1=y). x B∧∃z(x+z+1=y).xC . The converse implication ∃z(x+z+1=y).x B∧∃z(x+z+1=y). xC →∃z(x+z+1=y). x(B∧C) cannot be true. Explain, why. Exercise 3.3.3. a) Prove (a→) of Theorem 3.3.2. (Hint: start by assuming B∨C , apply D-elimination, etc., and finish by E2-introduction.)
 
 = Three-valued logic
 
