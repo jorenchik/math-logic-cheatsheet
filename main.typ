@@ -387,6 +387,61 @@ Ja kaut kas nav patiess visiem, tad vismaz viens ir patiess.
 + [L1-L8, L12-L15, MP, Gen]: ∃z(x+z+1=y).x(B∨C)↔∃z(x+z+1=y). x B∨∃z(x+z+1=y).xC .
 + [L1-L5, L13-L15, MP, Gen]: ∃z(x+z+1=y).x(B∧C)→∃z(x+z+1=y). x B∧∃z(x+z+1=y).xC . The converse implication ∃z(x+z+1=y).x B∧∃z(x+z+1=y). xC →∃z(x+z+1=y). x(B∧C) cannot be true.
 
+
+#block(breakable: false)[
+  == Negācijas un kvantoru attiecības
+
+  #align(center)[
+  #table(
+    columns: 2,
+    [
+      \
+      $forall x B$ \
+      `----------------------------------` \
+      $not not forall x B$ \
+      `==================================` \
+      $not exists x not B$ \
+      $forall x not not B$ \
+      $not not forall x not not B$ \
+      \
+    ],
+    [
+      \
+      $exists x not B$ \
+      `----------------------------------` \
+      $not not exists x not B$ \
+      $not forall x not not B$ \
+      `==================================` \
+      $not forall x B$ \
+      \
+    ],
+    [
+      \
+      $exists x B$\
+      `----------------------------------` \
+      $exists x not not B$ \
+      `----------------------------------` \
+      $not not exists x B$ \
+      $not not exists x not not B$ \
+      $not forall x not B$ \
+      \
+    ],
+    [
+      \
+      $forall x not B$ \
+      $not not forall x not B$ \
+      $not exists x not not B$ \
+      $not exists x B$\
+      \
+    ]
+  )
+  ]
+
+  Formulas vienā blokā ir konstruktīvi ekvivalentas.
+  Tās, kuras ir atdalītas ar raustītu līniju ir klasiski ekvivalentas jeb nekonstruktīvi ekvivalentas.
+  Starp tām eksistē konstruktīva implikācija $F_1 -> F_2$ un $not not (F_2 -> F_1)$, bet ne $F_2 -> F_1$ kur $F_1$ ir virs un $F_2$ ir zem raustītās līnijas.
+  Dubultā raustītā līnija apzīmē stingru nekonstruktīvu ekvivalenci. Tas nozīmē, ka klasiskajā loģikā šīs formulas ir ekvivalentas, bet konstruktīvajā loģikā patiess ir tikai $F_1 -> F_2$, bet ne $F_2 -> F_1$ un ne $not not (F_2 -> F_1)$.
+]
 = Three-valued logic
 
 This is a general scheme (page 74) to define a three valued logic.
