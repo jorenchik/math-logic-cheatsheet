@@ -110,12 +110,12 @@ $[L_1, L_2, L_14, T, #[MP], #[Gen]]: A_1, A_2, dots, A_n├ B→C$.
 
 === Theorem 2.2.1. (C-introduction un C-elimination)
 
-+ (C-introduction): $[L_5, #[MP]]: A, B├ A∧B$;
-+ (C-elimination): $[L_3, L_4, #[MP]]: A∧B ├ A, A∧B ├ B$.
++ (C-introduction): $[L_5, #[MP]]: A, B tack A∧B$;
++ (C-elimination): $[L_3, L_4, #[MP]]: A∧B tack A$, $A∧B tack B$.
 
 === Theorem 2.2.2.
 
-+ $[L_1, L_2, L_5, #[MP]]: (A→(B→C)) ↔ ((A→B)→(A→C))$ (extension of the axiom L_2).
++ $[L_1, L_2, L_5, #[MP]]: (A→(B→C)) <-> ((A→B)→(A→C))$ (extension of the axiom L_2).
 + $[L_1-L_4, #[MP]]: (A→B)∧( B→C)→( A→C)$ (another form of the *Law of
   Syllogism*, or *transitivity property of implication*).
 
@@ -140,10 +140,15 @@ $[L_1- L_5, #[MP]]$:
 
 === Theorem 2.3.1 (D-introduction un D-elimination)
 
-+ (D-introduction)$[L_6, L_7, #[MP]]: A├ A∨B; B├ A∨B$; 
-+ (D-elimination) If there is a proof $[T, #[MP]]: A_1, A_2, dots, A_n, B├ D$,
-  and a proof $[T, #[MP]]: A_1, A_2, dots, A_n, C├ D$, then there is a proof $[T,
-L_1, L_2, L_8, #[MP]]: A_1, A_2, dots, A_n, B∨C ├ D$. 
++ (D-introduction)\
+  $[L_6, L_7, #[MP]]: A tack A or B$\
+  $[L_6, L_7, #[MP]]: B tack A or B$; 
++ (D-elimination) \
+  If there are proofs\
+    $[T, #[MP]]: A_1, A_2, dots, A_n, B tack D$, \
+    $[T, #[MP]]: A_1, A_2, dots, A_n, C tack D$, \
+    then there is a proof \
+    $[T, L_1, L_2, L_8, #[MP]]: A_1, A_2, dots, A_n, B or C ├ D$. 
 
 
 === Theorem 2.3.2
@@ -393,7 +398,7 @@ But how should we define “truth values” of implication and negation?
 
 #table(
   columns: 5,
-  [$A$], [$B$], [$A∧B$], [$A∨B$], [$A→B$],
+  [$A$], [$B$], [$A and B$], [$A or B$], [$A -> B$],
   [$0$], [$0$], [$0$], [$0$], [$i_1$],
   [$0$], [$1$], [$0$], [$1$], [$i_2$],
   [$0$], [$2$], [$0$], [$2$], [$i_3$],
