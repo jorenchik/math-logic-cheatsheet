@@ -698,7 +698,7 @@ Negācijas normālforma ir tāda forma, kur ir tikai $or$, $and$, $not$ un atomi
 Parsēt drīkst arī jauktā secībā, tas var būt ātrāk.
 
 
-== Step 1.
+== Step 1. (Considering negative form)
 
 We will solve the task from the opposite: append to the hypotheses $F_1, dots
 F_n$ negation of formula $G$, and obtain the set $F_1, dots, F_n, ¬G$. When you
@@ -712,7 +712,7 @@ F_n, ¬G$ we can always check one formula $F_1∧...∧F_n∧¬G$. Therefore, ou
 (theoretically) is reducing to the task: given some predicate language formula
 F, verify, whether it is satisfiable or not.
 
-== Step 2.
+== Step 2. (Negation normal form)
 
 Before applying the algorithm, you first should translate formula to the
 so-called negation normal form. We can use the possibilities provided by
@@ -749,7 +749,7 @@ Now we have obtained equivalent formula in negation normal form – formula only
 has conjunctions and disjunctions, and all negations appear only in front of
 atoms.
 
-== Step 3.
+== Step 3. (Building a tree)
 
 Next, we should build a tree, vertices of which are formulas. In the root of
 the tree we put our formula. Then we have two cases.
@@ -762,10 +762,9 @@ the tree we put our formula. Then we have two cases.
 In both cases, the initial vertex is marked as processed. Algorithm continues
 to process all cases 1 and 2 until all non-atomic vertices have been processed.
 
-== Step 4.
+== Step 4. (Closing branches)
 
-When the construction of the tree is finished, we need to analyze and make
-conclusions. When one branch has some atom both with and without a negation
+When the construction of the tree is finished, we need to analyze and make conclusions. When one branch has some atom both with and without a negation
 (e.g., $A$ and $¬A$), then it is called closed branch. Other branches are
 called open branches.
 
