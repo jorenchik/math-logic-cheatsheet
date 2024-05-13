@@ -366,13 +366,12 @@ Ja kaut kas nav patiess visiem, tad vismaz viens ir patiess.
 == Theorem 3.3.1. 
 
 + [L1-L5, L12, L14, MP, Gen]: ∀x(B∧C)↔∀x B∧∀xC .
-+ [L1, L2, L6-L8, L12, L14, MP, Gen]: ├∀x B∨∀xC →∀x(B∨C) . The converse  formula ∀x(B∨C)→∀x B∨∀xC cannot  be  true.  Explain, why.
-
++ [L1, L2, L6-L8, L12, L14, MP, Gen]: ├∀x B∨∀xC →∀x(B∨C) . The converse  formula ∀x(B∨C)→∀x B∨∀xC cannot  be  true.
 
 == Theorem 3.3.2.
 
 + [L1-L8, L12-L15, MP, Gen]: ∃z(x+z+1=y).x(B∨C)↔∃z(x+z+1=y). x B∨∃z(x+z+1=y).xC .
-+ [L1-L5, L13-L15, MP, Gen]: ∃z(x+z+1=y).x(B∧C)→∃z(x+z+1=y). x B∧∃z(x+z+1=y).xC . The converse implication ∃z(x+z+1=y).x B∧∃z(x+z+1=y). xC →∃z(x+z+1=y). x(B∧C) cannot be true. Explain, why. Exercise 3.3.3. a) Prove (a→) of Theorem 3.3.2. (Hint: start by assuming B∨C , apply D-elimination, etc., and finish by E2-introduction.)
++ [L1-L5, L13-L15, MP, Gen]: ∃z(x+z+1=y).x(B∧C)→∃z(x+z+1=y). x B∧∃z(x+z+1=y).xC . The converse implication ∃z(x+z+1=y).x B∧∃z(x+z+1=y). xC →∃z(x+z+1=y). x(B∧C) cannot be true.
 
 = Three-valued logic
 
@@ -405,11 +404,37 @@ But how should we define “truth values” of implication and negation?
 
 #table(
   columns: 2,
-  [$A$], [¬$A$],
+  [$A$], [$not A$],
   [$0$], [$i_10$],
   [$1$], [$i_11$],
   [$2$], [$i_12$],
 )
+
+Tas, ko uzskata par dabisko jeb naturālo interpretāciju implikācijai un negācijai ir definēta šādi:
+
+#table(
+  columns: 3,
+  [$A$], [$B$], [$A -> B$],
+  [$0$], [$0$], [$2$],
+  [$0$], [$1$], [$2$],
+  [$0$], [$2$], [$2$],
+  [$1$], [$0$], [$1$],
+  [$1$], [$1$], [$1$],
+  [$1$], [$2$], [$2$],
+  [$2$], [$0$], [$0$],
+  [$2$], [$1$], [$1$],
+  [$2$], [$2$], [$2$]
+)
+
+#table(
+  columns: 2,
+  [$A$], [$not A$],
+  [$0$], [$2$],
+  [$1$], [$1$],
+  [$2$], [$0$]
+)
+
+
 
 = Model interpreation
 
@@ -550,15 +575,15 @@ interpretations, then three situations are possible:
   called *logically valid formulas* (LVF, Latv. *LVD*).
 
 + $F$  is  true  in  some interpretations  of  $L$,  and  false  − in  some other
-  interpretations of $L$.
+  interpretations of $L$. (Latv. *izpildāmas formulas*)
 
 + F is  false in all interpretations of L Formulas of this kind are called
-  *unsatisfiable formulas* (Latv. *neizpildāmas funkcijas*).
+  *unsatisfiable formulas* (Latv. *neizpildāmas formulas*).
 
 Formulas that are "not unsatisfiable" (formulas of classes (a) and (b)) are
 called, of course, satisfiable formulas: a formula is satisfiable, if it is
-true in at least one interpretation [*satisfiable functions* (Latv. *izpildāmas
-funkcijas*)].
+true in at least one interpretation [*satisfiable formulas* (Latv. *izpildāmas
+formulas*)].
 
 
 === Prooving an F is LVF (Latv. LVD)
@@ -614,12 +639,16 @@ become true, and so becomes the entire formula.
 
 == Gödel's Completeness Theorem
 
-*Theorem 4.3.1.* In classical predicate logic $[L_1−L_15,#[MP],#[Gen]]$ all
+*Theorem 4.3.1.* In classical predicate logic $[L_1 dash L_15,#[MP],#[Gen]]$ all
 logically valid formulas can be derived.
 
+Klasiskajā predikātu loģikā, visas LVD (loģiski vispārderīgas) formulas var izvest no aksiomām.
+
 *Theorem 4.3.3.* All formulas that can be derived in classical predicate logic
-$[L_1−L_15,#[MP],#[Gen]]$ are logically valid. In this logic it is not possible
+$[L_1 dash L_15,#[MP],#[Gen]]$ are logically valid. In this logic it is not possible
 to derive contradictions, it is consistent.
+
+Visas formulas, kuras var izvest klasiskajā predikātu loģikā, ir loģiski vispārderīgas (LVD).
 
 === Gödel’s theorem usage for task solving
 
@@ -633,6 +662,25 @@ $[L_1−L_15,#[MP],#[Gen]]$.
 
 
 = Tableaux algorithm
+
+Tableaux jeb tablo algoritms nosaka vai formula ir
+izpildāma vai neizpildāma.
+
+Ja vēlas noteikt, vai formula ir LVD (loģiski vispārderīga), tad vispirms paņem negāciju no formulas un pārbauda, vai tā ir neizpildāma. Ja ir, tad formula ir LVD.
+(Ja pretējā formula nekad nevar būt patiesa, tad pati formula vienmēr būs patiesa jeb LVD)
+
+Vispirms formulu samazina līdz negācijas normālformai, tad veido koku, kurā katra virsotne ir formula, atoms, vai atoma negācija.
+
+Negācijas normālforma ir tāda forma, kur ir tikai $or$, $and$, $not$ un atomi, kur $not$ ir tikai pie atomiem.
+
+- Ja ir disjunkcija $or$, tad koku sadala divās daļās, kur katrā ir viena no disjunkcijas daļām.
+- Ja ir konjunkcija, tad zaram pievieno abas konjunkcijas daļas.
+- Ja kādā brīdī zarā parādās atoms un tā negācija, zars ir neizpildāms un to var neturpināt.
+- Ja ir eksistences kvantors, tad zara turpina ar jaunu mainīgo, kas nav izmantots.
+- Ja ir universālais kvantors, tad zara turpina ar visiem mainīgajiem un šo formulu pievieno vēlreiz. Pro tip: šos parsē pašus pēdējos, tad būs mazāk darba.
+
+Parsēt drīkst arī jauktā secībā, tas var būt ātrāk.
+
 
 == Step 1.
 
@@ -659,10 +707,10 @@ $
 (A→B)↔¬A∨B
 $
 
-Then we apply de Morgan laws to get negations close to the atoms:
+Then we apply de Morgan laws to get negations closer to the atoms:
 
 $
-¬(A∨B)↔¬A∧¬B equiv \ 
+¬(A∨B)↔¬A∧¬B \ 
 ¬(A∧B)↔¬A∨¬B 
 $
 
