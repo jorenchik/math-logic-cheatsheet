@@ -187,7 +187,7 @@ B├ ¬C$, then there is a  proof $[T, L_1, L_2, L_9, #[MP]]: A_1, A_2, ..., A_n
 + $[L_1-L_4, L_9, #[MP]]: A∧¬B→¬( A→B)$.
 
 
-=== Theorem 2.4.3.
+=== Theorem 2.4.3. (Contraposition Law)
 
 $[L_1, L_2, L_9, #[MP]]: (A→B)→(¬B→¬A)$. What does it mean?
 It's the so-called *Contraposition Law*.
@@ -260,7 +260,7 @@ $[L_1-L_9, L_11, #[MP]]: ˫ ¬(A∧B)→¬A∨¬B$ . Hence, $[L_1-L_9, L_11, #[M
 ¬(A∧B)↔¬A∨¬B$ .
 
 
-=== Theorem 2.6.4. jeb I-elimination
+=== Theorem 2.6.4. (I-elimination)
 
 $[L_1-L_8, L_11, #[MP]]: (A→B)→¬ A∨B $. Hence, (I-elimination) $[L_1-L_11, #[MP]]:
 (A→B)↔¬ A∨B$.
