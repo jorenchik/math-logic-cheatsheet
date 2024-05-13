@@ -66,6 +66,10 @@ $bold(L_14): ∀x(G ->F (x))->(G->∀x F (x)) $
 $bold(L_15): ∀x(F (x) -> G) -> (exists x F (x)->G)$
 Šī formula pieņem, ka G nav atkarīgs no x.
 
+$bold(#[MP]): A; A -> B tack B$ jeb $(A; A -> B)/B$
+
+$bold(#[Gen]): F(t) tack forall x F(x)$ jeb $F(t)/(forall x F(x))$
+
 = Theorems
 
 == Proving directly
