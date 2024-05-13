@@ -133,7 +133,7 @@ $[L_1- L_5, #[MP]]$:
 
 + $A↔A$ (reflexivity),
 + $(A↔B)→(B↔A)$ (symmetry),
-+ $(A↔B)→((B↔C) →((A↔C))$ (transitivity).
++ $(A↔B)→((B↔C) →(A↔C))$ (transitivity).
 
 
 == Disjunction
@@ -141,8 +141,8 @@ $[L_1- L_5, #[MP]]$:
 === Theorem 2.3.1 (D-introduction un D-elimination)
 
 + (D-introduction)$[L_6, L_7, #[MP]]: A├ A∨B; B├ A∨B$; 
-+ (D-elimination) If there is a proof $[T, #[MP]]: A_1, A_2, ..., A_n, B├ D$,
-  and a proof $[T, #[MP]]: A_1, A_2, ..., A_n, C├ D$, then there is a proof $[T,
++ (D-elimination) If there is a proof $[T, #[MP]]: A_1, A_2, dots, A_n, B├ D$,
+  and a proof $[T, #[MP]]: A_1, A_2, dots, A_n, C├ D$, then there is a proof $[T,
 L_1, L_2, L_8, #[MP]]: A_1, A_2, dots, A_n, B∨C ├ D$. 
 
 
