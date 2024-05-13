@@ -10,9 +10,6 @@
 
 
 
-#set heading(numbering: "1.")
-
-
 #show outline.entry.where(
   level: 1
 ): it => {
@@ -37,35 +34,37 @@
 
 = Logical axiom schemes
 
-$bold(L_1): B→(C →B)$ – Patiesas formulas var secināt no jebkuras formulas.
+$bold(L_1): B -> (C -> B)$ – Patiesas formulas var secināt no jebkuras formulas.
 
-$bold(L_2):  (B→(C →D))→((B→C)→( B→D))$ – Implikāciju transitivitāte
+$bold(L_2):  (B->(C ->D))->((B->C)->( B->D))$ – Implikāciju transitivitāte
 
-$bold(L_3): B∧C→B$ – Konjunkcijas dekonstrukcija
+$bold(L_3): B and C->B$ – Konjunkcijas dekonstrukcija
 
-$bold(L_4): B∧C→C$ – Konjunkcijas dekonstrukcija
+$bold(L_4): B and C->C$ – Konjunkcijas dekonstrukcija
 
-$bold(L_5): B→(C →B∧C)$ – Konjunkcijas konstrukcija
+$bold(L_5): B->(C ->B and C)$ – Konjunkcijas konstrukcija
 
-$bold(L_6): B→B∨C$ – Disjunkcijas konstrukcija
+$bold(L_6): B->B or C$ – Disjunkcijas konstrukcija
 
-$bold(L_7): C →B∨C$ – Disjunkcijas konstrukcija
+$bold(L_7): C ->B or C$ – Disjunkcijas konstrukcija
 
-$bold(L_8): (B→D)→((C →D)→(B∨C →D))$ – Disjunktīvas implikācijas veidošana
+$bold(L_8): (B->D)->((C ->D)->(B or C ->D))$ – Disjunktīvas implikācijas veidošana
 
-$bold(L_9): (B→C)→((B→¬C )→¬B)$ – Pretrunīgas izteiksmes nevar būt patiesas
+$bold(L_9): (B->C)->((B->¬C )->¬B)$ – Pretrunīgas izteiksmes nevar būt patiesas
 
-$bold(L_10): ¬B→( B→C)$ – No pretrunas var secināt jebko
+$bold(L_10): ¬B->( B->C)$ – No pretrunas var secināt jebko
 
-$bold(L_11): B∨¬B$ – Izslēgšanas likums jeb jebkura izteiksme ir patiesa vai nepatiesa
+$bold(L_11): B or ¬B$ – Izslēgšanas likums jeb jebkura izteiksme ir patiesa vai nepatiesa
 
-$bold(L_12):  ∀x F (x)→F (t)$  (in particular, $∀x F (x)→F (x)$) – Ja funkcija izpildās visiem variantiem, tad tā izpildās arī konkrētam variantam.
+$bold(L_12):  ∀x F (x)->F (t)$  (in particular, $∀x F (x)->F (x)$) – Ja funkcija izpildās visiem variantiem, tad tā izpildās arī konkrētam variantam.
 
-$bold(L_13):  F (t)→∃ x F( x)$  (in  particular, $F (x)→∃ x F (x)$)
+$bold(L_13):  F (t)->∃ x F( x)$  (in  particular, $F (x)->∃ x F (x)$) – Ja funkcija izpildās konkrētam variantam, tad tā noteikti izpildās vismaz vienam variantam.
 
-$bold(L_14): ∀x(G →F (x))→(G→∀x F (x)) $
+$bold(L_14): ∀x(G ->F (x))->(G->∀x F (x)) $
+Šī formula pieņem, ka G nav atkarīgs no x.
 
-$bold(L_15): ∀x(F (x) arrow G) arrow (exists x F (x)→G)$
+$bold(L_15): ∀x(F (x) -> G) -> (exists x F (x)->G)$
+Šī formula pieņem, ka G nav atkarīgs no x.
 
 = Theorems
 
