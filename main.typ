@@ -5,6 +5,7 @@
    top: 1cm,
    bottom: 1cm,
  ),
+ numbering: "1"
 )
 
 
@@ -22,11 +23,11 @@
 
 #set enum(numbering: "a)")
 
-// #show outline.entry.where(
+// #show outline.entry.where( 
 //   level: 1
 // ): it => {
 //   v(12pt, weak: true)
-//   strong(it)
+//   strong(it) 
 // }
 
 #outline(indent: auto)
