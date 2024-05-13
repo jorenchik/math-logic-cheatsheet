@@ -108,7 +108,7 @@ $[L_1, L_2, L_14, T, #[MP], #[Gen]]: A_1, A_2, dots, A_n├ B→C$.
 
 == Conjunction 
 
-=== Theorem 2.2.1. jeb C-introduction un C-elimination
+=== Theorem 2.2.1. (C-introduction un C-elimination)
 
 + (C-introduction): $[L_5, #[MP]]: A, B├ A∧B$;
 + (C-elimination): $[L_3, L_4, #[MP]]: A∧B ├ A, A∧B ├ B$.
