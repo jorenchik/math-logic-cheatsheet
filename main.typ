@@ -669,13 +669,14 @@ Gödel’s theorem, $F$ is derivable in classical predicate logic
 $[L_1−L_15,#[MP],#[Gen]]$.
 
 
-= Tableaux algorithm
+= Tableaux algorithm (Tablo algoritms)
 
 Tableaux jeb tablo algoritms nosaka vai formula ir
 izpildāma vai neizpildāma.
 
 Ja vēlas noteikt, vai formula ir LVD (loģiski vispārderīga), tad vispirms paņem negāciju no formulas un pārbauda, vai tā ir neizpildāma. Ja ir, tad formula ir LVD.
-(Ja pretējā formula nekad nevar būt patiesa, tad pati formula vienmēr būs patiesa jeb LVD)
+(Ja pretējā formula nekad nevar būt patiesa, tad pati formula vienmēr būs patiesa jeb LVD) Jāņem vērā, ka tablo algoritms nav konstruktīvs,
+to nevar izmantot konstruktīvajā loģikā, jo tā pamatā ir L11 aksioma.
 
 Vispirms formulu samazina līdz negācijas normālformai, tad veido koku, kurā katra virsotne ir formula, atoms, vai atoma negācija.
 
