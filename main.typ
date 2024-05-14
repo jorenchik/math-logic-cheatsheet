@@ -282,8 +282,9 @@ $[L_1-L_11, #[MP]]:├ A$ if and only if $[L_1-L_10, #[MP]]:├ ¬¬A$.
 
 === De Morgan's Laws (Classical logic)
 
-+ $[L_1-L_11, #[MP]]: not (A or B) tack (not A and not B)$
-+ $[L_1-L_11, #[MP]]: not (A and B) tack (not A or not B)$
+
++ $[L_1-L_11, #[MP]]: not (A or B) <-> (not A and not B)$  First de Morgan's Law
++ $[L_1-L_11, #[MP]]: not (A and B) <-> (not A or not B)$ Second de Morgan's Law
 
 == Axiom independence
 
