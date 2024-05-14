@@ -215,7 +215,7 @@ $[L_1, L_2, L_9, #[MP]]: A→¬¬A$.
   constructively. The formula $¬¬( A∨¬A)$ can be proved in the constructive logic,
   but $A∨¬A$ can't.
 
-=== Theorem 2.4.9.
+=== Theorem 2.4.9. De Morgan's Laws (Constructive logic)
 
 + $[L_1, L_2, L_8, L_9, #[MP]]: ¬A∨¬B→¬( A∧B)$ . It's the constructive half of the
   so-called *First de Morgan Law*. What does it mean?
@@ -279,6 +279,11 @@ $[L_1-L_11, #[MP]]: ¬(A→B)→A∧¬B $.
 === Theorem 2.7.1 (Glivenko's Theorem).
 
 $[L_1-L_11, #[MP]]:├ A$ if and only if $[L_1-L_10, #[MP]]:├ ¬¬A$.
+
+=== De Morgan's Laws (Classical logic)
+
++ $[L_1-L_11, #[MP]]: not (A or B) tack (not A and not B)$
++ $[L_1-L_11, #[MP]]: not (A and B) tack (not A or not B)$
 
 == Axiom independence
 
